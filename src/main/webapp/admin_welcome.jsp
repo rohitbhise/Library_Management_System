@@ -32,9 +32,9 @@
 </div>
 <div class="card" style="margin:70px">
   <div class="card-body">
-    <h5 class="card-title">Calculate the fine table</h5>
-    <p class="card-text">Click here to calculate and view the fine table as of today</p>
-    <button type="button" class="btn btn-primary">Button</button>
+    <h5 class="card-title">Return a book and calculate fine</h5>
+    <p class="card-text">Click here to return a book and calculate fine</p>
+    <a href="ReturnBook.jsp"> <button type="button" class="btn btn-primary">Button</button></a>
   </div>
 </div>
 <div class="card" style="margin:70px">
