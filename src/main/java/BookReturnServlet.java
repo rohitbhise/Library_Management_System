@@ -44,22 +44,22 @@ public class BookReturnServlet extends HttpServlet {
 		    CallableStatement stmt = (CallableStatement) con.prepareCall(query);
 		    stmt.setInt(1,y);
 		    stmt.setInt(2, x);
-		    ResultSet rs = stmt.executeQuery();
+		    boolean rs = stmt.execute();
 		  
 		    PreparedStatement ps=con.prepareStatement("update Books set status=? where Book_Id=? ");
 		    ps.setString(1, "available");
 		    
 		    ps.setInt(2, x);
-		    rs= ps.executeQuery();
+		   boolean rn= ps.execute();
 		    
 		    ps=con.prepareStatement("select * from Fine where Member_Id=? and Book_Id=?");
 		    ps.setInt(1, y);
 		    ps.setInt(2, x);
-		    rs= ps.executeQuery();
+		   ResultSet r= ps.executeQuery();
 		    
-		    if(rs.next())
+		    if(r.next())
 		    {
-		    	out.println(rs.getString("Amount"));
+		    	out.println(r.getString("Amount"));
 		    	//out.println("<a href=IssueBook.jsp>TRY AGAIN</a>");
 		    }
 		    else
