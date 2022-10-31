@@ -17,7 +17,7 @@
   <div class="card-body">
     <h5 class="card-title">ISSUE A BOOK</h5>
     <p class="card-text">Click here to issue a book to a user</p>
-   <a href="IssueBook.jsp"> <button type="button" class="btn btn-primary">Button</button></a>
+   <a href="IssueBookUser.jsp"> <button type="button" class="btn btn-primary">Button</button></a>
   </div>
 </div>
 <div class="card" style="margin:70px">

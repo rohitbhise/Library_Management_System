@@ -18,7 +18,7 @@ input[type=text], input[type=password], textarea {
   width: 100%;  
   padding: 15px;  
   margin: 5px 0 22px 0;  
-  display: inline-block;  351
+  display: inline-block;  
   border: none;  
   background: #f1f1f1;  
 }  
@@ -49,22 +49,22 @@ hr {
 </style>  
 </head>  
 <body>  
-<form action="MemberIssueServlet" method=post>  
+<form action="BookIssueUser" method=post>  
   <div class="container">  
-  <center>  <h1> NEW MEMBERSHIP</h1> </center>  
+  <center>  <h1> BOOK ISSUE</h1> </center>  
   <hr>  
   <label> Member Name </label>   
-<input type="text" name="member_name" placeholder= "MemberName" size="15" required />
- <label> Member Password </label>   
-<input type="text" name="member_password" placeholder= "MemberPassword" size="15" required />  
+<input type="text" name="member_name" placeholder= "MemberName" size="15" required />  
+ <label> Member Id </label>   
+<input type="text" name="member_id" placeholder= "MemberID" size="15" required />   
   
-  
-<label> Payment Status </label>    
-<input type="text" name="payment_status" placeholder="PaymentStatus" size="15"required />   
- 
+<label> Book Name </label>    
+<input type="text" name="book_name" placeholder="BookName" size="15"required />   
+<label> Book ID </label>    
+<input type="text" name="book_id" placeholder="BookID" size="15"required />  
 <div>  
 
 <button type="submit"  class="registerbtn" >Register</button>    
 </form>  
 </body>  
-</html>
+</html>  

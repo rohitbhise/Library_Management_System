@@ -14,11 +14,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class MemberIssueServlet
- */
-@WebServlet("/MemberIssueServlet")
-public class MemberIssueServlet extends HttpServlet {
+
+@WebServlet("/BookIssueUser")
+public class BookIssueUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     
@@ -28,16 +26,14 @@ public class MemberIssueServlet extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/DBMS_PROJECT","Rohit","sudhakaR123");
 		    String n= request.getParameter("member_name");
-		    String p= request.getParameter("payment_status");
-		    String pw= request.getParameter("member_password");
-		    
-		   // int x=Integer.parseInt(request.getParameter("book_id"));
-		    //int y=Integer.parseInt(request.getParameter("member_id"));
-		    PreparedStatement ps=con.prepareStatement("insert into Members(Member_Name,Join_Date,Payment_Status,password) values(?,curdate(),?,?);");
-		    ps.setString(2, p);
-		    ps.setString(1, n);
-		    ps.setString(3, pw);
-		    
+		    String p= request.getParameter("book_name");
+		    int x=Integer.parseInt(request.getParameter("book_id"));
+		    int y=Integer.parseInt(request.getParameter("member_id"));
+		    PreparedStatement ps=con.prepareStatement("insert into borrower values(?,?,?,curdate())");
+		    //ps.setString(1, n);
+		    ps.setString(3, p);
+		    ps.setInt(1, x);
+		    ps.setInt(2, y);
 		    
 		    
 		    int rs= ps.executeUpdate();
@@ -48,11 +44,24 @@ public class MemberIssueServlet extends HttpServlet {
 		    }
 		    else
 		    {   
-		    	RequestDispatcher rd= request.getRequestDispatcher("admin_welcome.jsp");
-			      rd.forward(request,response);
-		    }
+		    	 ps=con.prepareStatement("update Books set status=? where Book_Name=?");
+				    //ps.setString(1, n);
+				    ps.setString(1, "taken");
+				    
+				    ps.setString(2, p);
+				     rs= ps.executeUpdate();
+				     if(rs==0)
+				     {
+				    	 out.println("error pls try again");
+					    out.println("<a href=IssueBook.jsp>TRY AGAIN</a>");
+				     }
+				     else
+				     {
+				    	 RequestDispatcher rd= request.getRequestDispatcher("User_Welcome.jsp");
+					      rd.forward(request,response);
+				     }
 		    	
-		    
+		    }
 		   
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -60,7 +69,6 @@ public class MemberIssueServlet extends HttpServlet {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		
 	}
 
 }
